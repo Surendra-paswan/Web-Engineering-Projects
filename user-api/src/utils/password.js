@@ -11,7 +11,7 @@ export async function hashPassword(plain) {
   const salt = randomBytes(16);
   const hash = await scryptAsync(plain, salt, KEY_LENGTH);
   return `scrypt$${salt.toString('hex')}$${hash.toString('hex')}`;
-}
+} 
 
 export async function verifyPassword(plain, stored) {
   const [algorithm, saltHex, hashHex] = stored.split('$');
